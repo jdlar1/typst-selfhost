@@ -1,0 +1,54 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    env_file: ${ENV_FILE:-.env}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - convex
+      - rustfs
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    env_file: ${ENV_FILE:-.env}
+    depends_on:
+      - convex
+      - rustfs
+
+  convex:
+    image: ghcr.io/get-convex/convex-backend:latest
+    env_file: ${ENV_FILE:-.env}
+    ports:
+      - "3210:3210"
+      - "3211:3211"
+    volumes:
+      - convex-data:/convex/data
+
+  rustfs:
+    image: rustfs/rustfs:latest
+    command: server /data
+    environment:
+      RUSTFS_ACCESS_KEY: ${RUSTFS_ACCESS_KEY:-typst-selfhost}
+      RUSTFS_SECRET_KEY: ${RUSTFS_SECRET_KEY:-typst-selfhost-secret}
+    ports:
+      - "9000:9000"
+    volumes:
+      - rustfs-data:/data
+
+  rustfs-console:
+    image: rustfs/rustfs:latest
+    profiles: ["dev"]
+    command: console
+    env_file: ${ENV_FILE:-.env}
+    ports:
+      - "9001:9001"
+    depends_on:
+      - rustfs
+
+volumes:
+  convex-data:
+  rustfs-data:

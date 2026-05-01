@@ -1,0 +1,17 @@
+{
+  "name": "@typst-selfhost/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "@typst-selfhost/domain": "workspace:*",
+    "effect": "^3.21.2"
+  }
+}

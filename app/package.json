@@ -1,0 +1,21 @@
+{
+  "name": "@typst-selfhost/app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev --host 0.0.0.0",
+    "build": "vite build",
+    "start": "node .output/server/index.mjs",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.169.1",
+    "@tanstack/react-start": "^1.167.58",
+    "@typst-selfhost/domain": "workspace:*",
+    "@vitejs/plugin-react": "^4.7.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "vite": "^7.3.2"
+  }
+}
