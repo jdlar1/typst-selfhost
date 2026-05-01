@@ -1,120 +1,86 @@
-:root {
-  color-scheme: light dark;
-  --bg: #f8f7f2;
-  --panel: #ffffff;
-  --text: #1d1b16;
-  --muted: #6d6658;
-  --border: #ddd6c8;
-  --accent: #7c4dff;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+@import "tailwindcss";
+
+@theme {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-primary: rgb(var(--primary));
+  --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-foreground: rgb(var(--secondary-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
+  --color-destructive: rgb(var(--destructive));
+  --color-destructive-foreground: rgb(var(--destructive-foreground));
+  --color-success: rgb(var(--success));
+  --color-warning: rgb(var(--warning));
+  --color-border: rgb(var(--border));
+  --color-input: rgb(var(--input));
+  --color-ring: rgb(var(--ring));
+  --color-editor: rgb(var(--editor));
+  --color-editor-foreground: rgb(var(--editor-foreground));
+  --color-editor-gutter: rgb(var(--editor-gutter));
+  --color-preview: rgb(var(--preview));
+  --color-preview-foreground: rgb(var(--preview-foreground));
 }
 
-[data-theme="dark"] {
-  --bg: #11100d;
-  --panel: #1c1a16;
-  --text: #f3ecdd;
-  --muted: #b4aa98;
-  --border: #393329;
-  --accent: #a78bfa;
-}
+@layer base {
+  :root {
+    color-scheme: dark;
+    --background: 24 18 15;
+    --foreground: 252 244 232;
+    --card: 31 24 21;
+    --card-foreground: 252 244 232;
+    --muted: 45 37 33;
+    --muted-foreground: 181 166 146;
+    --primary: 154 121 255;
+    --primary-foreground: 18 12 25;
+    --secondary: 48 38 33;
+    --secondary-foreground: 245 231 213;
+    --accent: 255 177 93;
+    --accent-foreground: 34 20 9;
+    --destructive: 255 91 91;
+    --destructive-foreground: 255 246 240;
+    --success: 82 211 147;
+    --warning: 255 202 99;
+    --border: 67 55 49;
+    --input: 67 55 49;
+    --ring: 154 121 255;
+    --editor: 16 17 20;
+    --editor-foreground: 235 232 224;
+    --editor-gutter: 31 32 37;
+    --preview: 244 236 223;
+    --preview-foreground: 31 24 21;
+    --radius: 0.875rem;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
 
-* {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-}
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: radial-gradient(circle at 12% 8%, rgb(var(--primary) / 0.2), transparent 32rem),
+      radial-gradient(circle at 86% -4%, rgb(var(--accent) / 0.14), transparent 30rem),
+      linear-gradient(180deg, rgb(30 22 18 / 0.95), rgb(var(--background)) 24rem);
+    color: rgb(var(--foreground));
+  }
 
-a {
-  color: inherit;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-.shell {
-  min-height: 100vh;
-}
-
-.topbar {
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-}
-
-.nav {
-  display: flex;
-  gap: 1rem;
-}
-
-.page {
-  margin: 0 auto;
-  max-width: 1120px;
-  padding: 2rem 1.5rem;
-}
-
-.card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.25rem;
-}
-
-.grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-.editor-layout {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 220px minmax(0, 1fr) minmax(280px, 0.8fr);
-}
-
-.file-tree,
-.preview,
-.editor-pane {
-  min-height: 540px;
-}
-
-textarea.code {
-  background: #0f0f0f;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: #f3f3f3;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  min-height: 420px;
-  padding: 1rem;
-  resize: vertical;
-  width: 100%;
-}
-
-.muted {
-  color: var(--muted);
-}
-
-.button {
-  background: var(--accent);
-  border: 0;
-  border-radius: 999px;
-  color: white;
-  cursor: pointer;
-  padding: 0.6rem 0.9rem;
-}
-
-@media (max-width: 900px) {
-  .editor-layout {
-    grid-template-columns: 1fr;
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
   }
 }

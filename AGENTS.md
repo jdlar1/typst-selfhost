@@ -108,6 +108,7 @@ Before exposing the app, change `INITIAL_SETUP_TOKEN` in `.env`.
 ## Code Organization
 
 - `app/`: TanStack Start app, routes, styles, browser-facing shell.
+- `app/src/components/ui/`: local shadcn/ui-style components.
 - `convex/`: Convex Auth, schema, queries, mutations, actions.
 - `worker/`: Effect worker package and tests.
 - `packages/domain/`: pure shared logic and validation.
@@ -119,7 +120,7 @@ When adding shared business logic, prefer `packages/domain` if it can be tested 
 
 When adding worker side effects, keep them behind Effect services so fake layers can test success/failure paths.
 
-When adding UI, keep M1 visually plain but dark-mode usable. Do not build the full design system before Milestone 3.
+When adding UI, use Tailwind v4 utilities and local shadcn/ui-style components. Keep M1 dark-mode usable and app-first. Do not add a marketing landing page before the editor loop works.
 
 ## Convex Notes
 
