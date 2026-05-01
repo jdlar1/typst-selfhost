@@ -113,6 +113,7 @@ Before exposing the app, change `INITIAL_SETUP_TOKEN` in `.env`.
 - `packages/domain/`: pure shared logic and validation.
 - `tests/e2e/`: Playwright tests.
 - `docs/`: planning and decision documents.
+- `.github/workflows/`: CI and Docker publishing workflows.
 
 When adding shared business logic, prefer `packages/domain` if it can be tested without services.
 
@@ -135,6 +136,15 @@ When adding UI, keep M1 visually plain but dark-mode usable. Do not build the fu
 - The default Compose stack must remain small: `web`, `convex`, `rustfs`, `worker`.
 - `rustfs-console` is behind the `dev` profile.
 - Do not expose RustFS console by default.
+- Docker images publish to GHCR from `.github/workflows/docker-publish.yml`.
+- Do not add `latest` image publishing until the product loop is complete enough for ordinary self-host use.
+
+## Versioning Notes
+
+- Use SemVer-style tags such as `v0.1.0`.
+- Keep `package.json` version aligned with release tags.
+- Update `CHANGELOG.md` before release tags.
+- Versioning and publishing policy lives in `docs/release/versioning-and-publishing.md`.
 
 ## Testing Guidance
 

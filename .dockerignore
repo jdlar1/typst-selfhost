@@ -1,0 +1,33 @@
+# Dependencies and package manager caches
+node_modules/
+.pnpm-store/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+opencode.json
+
+# Build outputs
+dist/
+.output/
+build/
+coverage/
+*.tsbuildinfo
+
+# Test artifacts
+test-results/
+playwright-report/
+.playwright/
+
+# Git and editor noise
+.git/
+.github/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local runtime data
+data/
+tmp/

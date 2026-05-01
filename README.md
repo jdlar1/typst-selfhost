@@ -52,6 +52,7 @@ See the source planning docs:
 - `docs/masterplan.md`
 - `docs/milestones/01-self-hostable-mvp.md`
 - `docs/decisions/m1-self-hostable-mvp-decisions.md`
+- `docs/release/versioning-and-publishing.md`
 
 ## Stack
 
@@ -247,6 +248,25 @@ The current worker package implements the Effect service boundary and testable o
 - Use Effect for worker side effects and tests, not for ordinary React component state.
 - Keep dark mode usable from the beginning, but do not build a full design system in M1.
 - Do not add extra required services without updating the milestone decision docs.
+
+## Versioning And Docker Publishing
+
+The project uses SemVer-style tags such as `v0.1.0`. Pre-1.0 releases can still contain breaking changes, but those changes should be documented once users may have persisted data.
+
+Docker images are built in CI and published to GitHub Container Registry by `.github/workflows/docker-publish.yml`:
+
+```txt
+ghcr.io/<owner>/<repo>-web
+ghcr.io/<owner>/<repo>-worker
+```
+
+Publishing behavior:
+
+- Pushes to `main` publish `edge` images.
+- Tags like `v0.1.0` publish versioned images.
+- `latest` is intentionally not published until the product loop is complete enough for normal self-host use.
+
+See `docs/release/versioning-and-publishing.md` for the release checklist.
 
 ## Troubleshooting
 

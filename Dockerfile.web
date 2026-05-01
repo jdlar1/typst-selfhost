@@ -14,7 +14,14 @@ COPY . .
 RUN pnpm --filter @typst-selfhost/app build
 
 FROM base AS runtime
+ARG VERSION=0.1.0
+ARG REVISION=unknown
 ENV NODE_ENV=production
+LABEL org.opencontainers.image.title="Typst Self-Host Web"
+LABEL org.opencontainers.image.description="TanStack Start web app for Typst Self-Host"
+LABEL org.opencontainers.image.version=$VERSION
+LABEL org.opencontainers.image.revision=$REVISION
+LABEL org.opencontainers.image.licenses="Apache-2.0"
 COPY --from=build /app /app
 EXPOSE 3000
 CMD ["pnpm", "--filter", "@typst-selfhost/app", "start"]
