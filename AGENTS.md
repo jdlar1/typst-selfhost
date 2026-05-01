@@ -137,7 +137,7 @@ When adding UI, use Tailwind v4 utilities and local shadcn/ui-style components. 
 - The default Compose stack must remain small: `web`, `convex`, `rustfs`, `worker`.
 - `rustfs-console` is behind the `dev` profile.
 - Do not expose RustFS console by default.
-- Docker images publish to GHCR from `.github/workflows/docker-publish.yml`.
+- Docker images publish to GHCR from `.github/workflows/docker-publish.yml` only for `v*` tags.
 - Do not add `latest` image publishing until the product loop is complete enough for ordinary self-host use.
 
 ## Versioning Notes

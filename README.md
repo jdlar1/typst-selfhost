@@ -262,8 +262,8 @@ ghcr.io/<owner>/<repo>-worker
 
 Publishing behavior:
 
-- Pushes to `main` publish `edge` images.
 - Tags like `v0.1.0` publish versioned images.
+- Pushes to `main` only build images in CI; they do not publish.
 - `latest` is intentionally not published until the product loop is complete enough for normal self-host use.
 
 See `docs/release/versioning-and-publishing.md` for the release checklist.

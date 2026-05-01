@@ -27,12 +27,11 @@ ghcr.io/<owner>/<repo>-worker
 
 Tags:
 
-- `edge`: published from `main`.
 - `vX.Y.Z`: published from matching Git tags.
 - `X.Y.Z`, `X.Y`, and `X`: published from matching Git tags by metadata extraction.
 - `latest`: intentionally not published yet.
 
-Do not publish `latest` until the product loop is complete enough for normal self-host use.
+Images are not published from ordinary `main` pushes. CI still builds images on `main` and pull requests to verify Dockerfiles. Do not publish `latest` until the product loop is complete enough for normal self-host use.
 
 ## Release Checklist
 
